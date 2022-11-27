@@ -11,7 +11,7 @@ Feature:Verifying Response Body
   #country abbreviation -> string
   # places -> array
 
-@wip
+  @wip
   Scenario Outline:
 
     When  User enters  "<countryCode>" and "<postalCode>" as parameters
@@ -29,15 +29,18 @@ Feature:Verifying Response Body
   # WHEN I make a valid request
   # THEN the post code returned in the response matches the postcode I pass as a request parameter
 
-  Scenario:
+  Scenario Outline:
 
-    When  User enters "<postalCode>" as pathParam
-    Then User gets  postCode in response body
+    When  User enters  "<countryCode>" and "<postalCode>" as parameters
+    Then  User gets Status code 200
+    And   User gets content type application json
+    And   User gets  postcode in response body
+    Examples:
+      | countryCode | postalCode |
+      | GB          | AB1        |
+      | US          | 00210      |
+      | FR          | 01000      |
 
-      | postalCode |
-      | AB1        |
-      | 00210      |
-      | 01000      |
 
 
    #3.	GIVEN I am searching for a postcode
@@ -47,8 +50,8 @@ Feature:Verifying Response Body
   Scenario Outline:
 
     When  User enters "<postalCode>" as pathParam
-    And  User enters wrong "<countryCode>"
-    Then User gets 404 error
+    And   User enters wrong "<countryCode>"
+    Then  User gets 404 error
 
     Examples:
       | countryCode | postalCode |
