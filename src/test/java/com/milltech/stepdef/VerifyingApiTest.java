@@ -8,10 +8,10 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class VerifyingResponseBody {
+public class VerifyingApiTest {
 
 
     Response response;
@@ -52,13 +52,12 @@ public class VerifyingResponseBody {
 
 //_______________________________________________________________________________________
 
-    @When("User enters {string} as pathParam")
-    public void userEntersAsPathParam(String arg0) {
 
-    }
 
-    @Then("User gets  postCode in response body")
+    @Then("User gets  postcode in response body")
     public void userGetsPostCodeInResponseBody() {
+
+
     }
 
 

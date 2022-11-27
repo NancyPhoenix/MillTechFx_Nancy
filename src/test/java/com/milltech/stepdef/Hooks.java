@@ -13,11 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Hooks {
 
-    @Before
 
-    public  void setUpRequest(){
-        baseURI= ConfigReader.getProperty("baseURl");
-    }
     @Before
     public void set(){
         Driver.getDriver().manage().window().maximize();
